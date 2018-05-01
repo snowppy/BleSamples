@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BleSample.Pages.SamplePage">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" IsClippedToBounds="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame Margin="8,8,8,0" Padding="0" CornerRadius="2" Grid.Row="0" Grid.Column="0" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Picker ItemsSource="{Binding AvailableDevices}"  Grid.Row="0" Margin="16,24,16,0" TextColor="{StaticResource Grey900}" Grid.Column="0" Title="Devices" SelectedItem="{Binding SelectedDeviceKey}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"></Picker>
+                        <Label Text="{Binding SelectedDevice.ConnectState, StringFormat='State: {0}'}" TextColor="{StaticResource Grey500}" Margin="18,0,16,0" Grid.Column="0" Style="{StaticResource SmallLabelStyle}" LineBreakMode="TailTruncation"  Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                        <Frame Grid.Column="1" HorizontalOptions="EndAndExpand" HasShadow="True" CornerRadius="2"  Margin="0,16,16,0" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{StaticResource Blue400}">
+                            <!--<ffimageloadingsvg:SvgCachedImage  Source="bluetooth.svg" WidthRequest="48" HeightRequest="48" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <ffimageloadingsvg:SvgCachedImage.Transformations>
+                                    <ffimageTransform:TintTransformation EnableSolidColor="True" HexColor="#E1F5FE" ></ffimageTransform:TintTransformation>
+                                </ffimageloadingsvg:SvgCachedImage.Transformations>
+                            </ffimageloadingsvg:SvgCachedImage>-->
+                        </Frame>
+                        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Grid.Column="0" Margin="16,0,4,8" IsVisible="{Binding SelectedDevice, Converter={StaticResource DeviceConnectionStateToVisiblityConverter}, ConverterParameter='Connecting Disconnected'}">
+                                <Button Text="Connect" TextColor="{StaticResource Grey50}" BackgroundColor="{StaticResource Lime500}" Command="{Binding ConnectDeviceCommand}"></Button>
+                                <ActivityIndicator IsRunning="{Binding Connecting}" Color="{StaticResource Orange500}"  WidthRequest="24"></ActivityIndicator>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Margin="0,0,4,8"  IsVisible="{Binding SelectedDevice, Converter={StaticResource DeviceConnectionStateToVisiblityConverter}, ConverterParameter='Connected Disconnecting'}">
+                                <Button Text="Disconnect" BackgroundColor="{StaticResource Grey500}" Command="{Binding DisconnectDeviceCommand}"></Button>
+                                <ActivityIndicator IsRunning="{Binding Disconnecting}" Color="{StaticResource Orange500}"  WidthRequest="24"></ActivityIndicator>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="3" Margin="0,0,12,8" HorizontalOptions="EndAndExpand">
+                                <ActivityIndicator IsRunning="{Binding ScanningForDevices}" Color="{StaticResource Orange500}" WidthRequest="24"></ActivityIndicator>
+                                <Button Text="Scan" BackgroundColor="{StaticResource Blue400}" Command="{Binding ScanForDevicesCommand}"></Button>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                  <Frame Grid.Row="1" Padding="0" CornerRadius="2" Grid.Column="0" Margin="8,0,8,0" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding SelectedDevice, Converter={StaticResource DeviceConnectionStateToVisiblityConverter}, ConverterParameter='Connected Disconnecting'}">
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Command:" TextColor="{StaticResource Grey900}" Style="{StaticResource LargeLabelStyle}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" Margin="16,16,16,2"></Label>
+                        <Button Text="Send" Command="{Binding ToggleLedCommand}" Margin="16,16,16,2" Grid.Row="0" Grid.Column="1"></Button>
+                        <BoxView Grid.Row="1" Margin="0,8,0,0" HeightRequest="1" BackgroundColor="{StaticResource Grey300}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"></BoxView>
+                        <Label Text="Response" Margin="16,8,8,8" TextColor="{StaticResource Grey900}" Style="{StaticResource SmallLabelStyle}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation"></Label>
+                        <Label Text="{Binding CommandResponse}" Margin="16,8,8,8" TextColor="{StaticResource Grey900}" Style="{StaticResource SmallLabelStyle}" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation"></Label>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

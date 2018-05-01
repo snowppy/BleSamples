@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BleSample.Converters"
+             xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+             x:Class="BleSample.App">
+	<Application.Resources>
+
+		  <ResourceDictionary>
+            <converters:DeviceConnectionStateToVisiblityConverter x:Key="DeviceConnectionStateToVisiblityConverter"></converters:DeviceConnectionStateToVisiblityConverter>
+            <Color x:Key="Blue50" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#E3F2FD</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Blue400" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#42a5f5</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Pink500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#E91E63</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Blue500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#2196f3</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Orange300" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FFB74D</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Orange500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FF9800</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Green400" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#66BB6A</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Lime500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#CDDC39</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Green500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#4CAF50</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Red500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#F44336</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Teal500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#009688</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Grey50" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#fafafa</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Grey300" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#E0E0E0</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Grey500" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#9E9E9E</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Grey900" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#212121</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="FakeTransparent" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#01ffffff</x:String>
+                </x:Arguments>
+            </Color>
+            <Style x:Key="NormalLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Default">
+                    <!--<Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"></On>
+                        </OnPlatform>
+                    </Setter.Value>-->
+                </Setter>
+                <Setter Property="FontFamily" Value="SegoeUI" />
+            </Style>
+            <Style x:Key="MicroLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Micro">
+                    <!--<Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"></On>
+                        </OnPlatform>
+                    </Setter.Value>-->
+                </Setter>
+                <Setter Property="FontFamily" Value="SegoeUI" />
+            </Style>
+            <Style x:Key="SmallLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small">
+                    <!--<Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"></On>
+                        </OnPlatform>
+                    </Setter.Value>-->
+                </Setter>
+                <Setter Property="FontFamily" Value="SegoeUI" />
+            </Style>
+            <Style x:Key="LargeLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large">
+                    <!--<Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"></On>
+                        </OnPlatform>
+                    </Setter.Value>-->
+                </Setter>
+                <Setter Property="FontFamily" Value="SegoeUI" />
+            </Style>
+            <Style x:Key="MenuOptionLabelStyleM" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium">
+                    <!--<Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS"></On>
+                        </OnPlatform>
+                    </Setter.Value>-->
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource Grey900}"></Setter>
+                <Setter Property="FontFamily" Value="SegoeUI" />
+            </Style>
+        </ResourceDictionary>
+
+	</Application.Resources>
+</prism:PrismApplication>
